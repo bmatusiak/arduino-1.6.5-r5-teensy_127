@@ -7,3 +7,4 @@ programmer=arduino:avrisp
 software=ARDUINO
 target_package=teensy
 target_platform=avr
+build.verbose=true
