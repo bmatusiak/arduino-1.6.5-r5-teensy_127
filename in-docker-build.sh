@@ -42,9 +42,10 @@ cd ../
 #chmod +x teensyduino
 #./teensyduino
 
-git clone https://github.com/bmatusiak/arduino-1.6.5-r5-teensy_127
-mv arduino-1.6.5-r5-teensy_127/arduino-1.6.5-r5 .
-rm -rf ./arduino-1.6.5-r5-teensy_127
+#git clone https://github.com/bmatusiak/arduino-1.6.5-r5-teensy_127
+#mv arduino-1.6.5-r5-teensy_127/arduino-1.6.5-r5 .
+#rm -rf ./arduino-1.6.5-r5-teensy_127
+cp -a ../onlykey/arduino-1.6.5-r5 .
 
 #rename firmware files to be replaced 
 cd arduino-1.6.5-r5/hardware/teensy/avr/cores/teensy3
@@ -99,3 +100,4 @@ cd ..
 #(loader): remote cmd from 14: "dir:/tmp/build7833168683287571985.tmp/"
 #(loader): remote cmd from 14: "file:OnlyKey.cpp.hex"
 #(loader): File "OnlyKey.cpp.hex". 263104 bytes, 408% used
+
