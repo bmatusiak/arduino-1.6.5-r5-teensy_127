@@ -1,0 +1,9 @@
+board=teensy31
+build.path=../build
+custom_keys=teensy31_en-us
+custom_speed=teensy31_96opt
+custom_usb=teensy31_rawhid
+programmer=arduino:avrisp
+software=ARDUINO
+target_package=teensy
+target_platform=avr
