@@ -9,11 +9,17 @@
 
 #https://github.com/trustcrypto/OnlyKey-Firmware/issues/59
 
+##you can use local git repos, this file is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
+#firmware_git_path=/onlykey/OnlyKey-Firmware
+#libraries_git_path=/onlykey/libraries
 
+firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
+libraries_git_path=https://github.com/trustcrypto/libraries
 
 firmware_file=OnlyKey/OnlyKey.ino
 firmware_branch=master
 libraries_branch=master
+
 
 
 #firmware_file=OnlyKey_Beta/OnlyKey_Beta.ino
@@ -41,16 +47,19 @@ libraries_branch=master
 #chmod +x teensy_post_compile
 #cd ../../..
 
+
 cd builds
-rm -rf ./*
+rm -rf ./* #clean last build
 
 #get firmware
-git clone https://github.com/trustcrypto/OnlyKey-Firmware ./OnlyKey-Firmware
+
+# Control will enter here if $DIRECTORY exists.
+git clone $firmware_git_path ./OnlyKey-Firmware
 cd ./OnlyKey-Firmware
 git checkout $firmware_branch
 cd ../
 
-#get arduino-folder
+#get fresh arduino-folder
 cp -a ../onlykey/arduino-1.6.5-r5 .
 
 #rename firmware files to be replaced 
@@ -66,7 +75,7 @@ mv usb_rawhid.h usb_rawhid.h_orig
 mv usb_keyboard.c usb_keyboard.c_orig
 #gedit usb_keyboard.h someone said to edit keyboard.h but IDK
 
-## back to desktop
+## back to main folder (builds)
 cd ../../../../../..
 
 #copy over custom files
@@ -76,7 +85,7 @@ cp ./OnlyKey-Firmware/*.h ./arduino-1.6.5-r5/hardware/teensy/avr/cores/teensy3/.
 # install custom libraries
 cd ./arduino-1.6.5-r5/libraries
 git init
-git remote add origin https://github.com/trustcrypto/libraries
+git remote add origin $libraries_git_path
 git pull origin $libraries_branch
 cd ..
 
