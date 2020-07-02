@@ -75,11 +75,11 @@ git pull origin v0.2-beta.8
 cd ..
 
 #old teensy dont work well, so we get the latest
-cd hardware/tools
-curl https://www.pjrc.com/teensy/teensy_linux64.tar.gz -o teensy_linux64.tar.gz
-rm ./teensy
-tar -xvf teensy_linux64.tar.gz
-cd ../..
+#cd hardware/tools
+#curl https://www.pjrc.com/teensy/teensy_linux64.tar.gz -o teensy_linux64.tar.gz
+#rm ./teensy
+#tar -xvf teensy_linux64.tar.gz
+#cd ../..
 
 #open teensy loader
 #./hardware/tools/teensy &
