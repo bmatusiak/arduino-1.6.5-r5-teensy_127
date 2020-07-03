@@ -17,6 +17,7 @@ RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime \
     arduino \
     libgtk2.0 \
     libjssc-java \
+    libjss-java \
   && rm -rf /var/lib/apt/lists/*
   
   
