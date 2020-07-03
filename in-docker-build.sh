@@ -50,11 +50,13 @@ libraries_branch=master
 
 
 cd /builds
-rm -rf /builds/* #clean last build
+##rm -rf /builds/* #clean last build
 
+rm -rf /builds/arduino-1.6.5-r5*
 #get clean arduino
 cp -a /onlykey/arduino-1.6.5-r5 /builds/.
 
+rm -rf /builds/OnlyKey-Firmware
 #get firmware
 if [[ -d "${firmware_git_path}" && ! -L "${firmware_git_path}" ]] ; then
     cp -a $firmware_git_path /builds/OnlyKey-Firmware
@@ -84,9 +86,10 @@ cd /builds/arduino-1.6.5-r5
 /usr/bin/xvfb-run -- ./arduino --verify ../OnlyKey-Firmware/$firmware_file \
   --preferences-file ./preferences.txt 
 
-cd ../
-cp ./build/*.hex .
-rm -rf ./arduino-1.6.5-r5
-rm -rf ./build
-rm -rf ./OnlyKey-Firmware
+cd /builds
+rm -rf /builds/*.hex
+cp /builds/build/*.hex /builds/.
+rm -rf /builds/arduino-1.6.5-r5
+rm -rf /builds/OnlyKey-Firmware
+#rm -rf /builds/build
 
