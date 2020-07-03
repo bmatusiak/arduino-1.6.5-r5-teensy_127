@@ -90,4 +90,5 @@ cd /builds/arduino-1.6.5-r5
   --preferences-file ./preferences.txt 
 
 
+cp ../build/*.hex ../.
 
