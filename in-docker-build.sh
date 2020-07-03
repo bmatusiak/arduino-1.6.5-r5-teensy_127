@@ -9,13 +9,16 @@
 
 #https://github.com/trustcrypto/OnlyKey-Firmware/issues/59
 
+####-------   WHERE
+firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
+libraries_git_path=https://github.com/trustcrypto/libraries
 
-#firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
-#libraries_git_path=https://github.com/trustcrypto/libraries
-##you can use local git repos, this file is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
-firmware_git_path=/onlykey/OnlyKey-Firmware
-libraries_git_path=/onlykey/libraries
+## you can use local folders, this file is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
+#firmware_git_path=/onlykey/OnlyKey-Firmware
+#libraries_git_path=/onlykey/libraries
 
+
+####-------   WHAT   ## you can load any git checkouts or branch
 firmware_file=OnlyKey/OnlyKey.ino
 firmware_branch=master
 libraries_branch=master
