@@ -6,14 +6,14 @@
 # Right now you can compile it if you want, but probably not worth your time lol
 # 
 
-
 #https://github.com/trustcrypto/OnlyKey-Firmware/issues/59
 
-####-------   WHERE
+####-------   WHERE 
 firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
 libraries_git_path=https://github.com/trustcrypto/libraries
 
-## you can use local folders, this file is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
+## `/onlykey/.` is relative to this script
+## folders, this script is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
 #firmware_git_path=/onlykey/OnlyKey-Firmware
 #libraries_git_path=/onlykey/libraries
 
