@@ -2,8 +2,4 @@ builds/*
 OnlyKey-Firmware/
 libraries/
 
-#lockedfiles
-arduino-1.6.5-r5/
-in-docker-build.sh
-Makefile
-Dockerfile
+
