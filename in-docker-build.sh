@@ -9,13 +9,13 @@
 #https://github.com/trustcrypto/OnlyKey-Firmware/issues/59
 
 ####-------   WHERE 
-firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
-libraries_git_path=https://github.com/trustcrypto/libraries
+#firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
+#libraries_git_path=https://github.com/trustcrypto/libraries
 
 ## `/onlykey/.` is relative to this script
 ## folders, this script is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
-#firmware_git_path=/onlykey/OnlyKey-Firmware
-#libraries_git_path=/onlykey/libraries
+firmware_git_path=/onlykey/OnlyKey-Firmware
+libraries_git_path=/onlykey/libraries
 
 
 ####-------   WHAT   ## you can load any git checkouts or branch
@@ -50,7 +50,7 @@ libraries_branch=master
 
 
 cd /builds
-##rm -rf /builds/* #clean last build
+# rm -rf /builds/* #clean last build
 
 rm -rf /builds/arduino-1.6.5-r5*
 #get clean arduino
@@ -66,6 +66,11 @@ else
     git checkout $firmware_branch
     cd /builds
 fi
+
+##get firmware-commit 
+cd /builds/OnlyKey-Firmware
+commit=$(git rev-parse --verify HEAD | cut -c1-7)
+cd /builds
 
 #copy firmware
 cp /builds/OnlyKey-Firmware/*.c ./arduino-1.6.5-r5/hardware/teensy/avr/cores/teensy3/.
@@ -83,13 +88,16 @@ else
 fi
 
 cd /builds/arduino-1.6.5-r5
+mv ./libraries/onlykey/onlykey.h ./libraries/onlykey/onlykey.h_orig
+sed "s/.0\-test/.0\-${commit}/g" ./libraries/onlykey/onlykey.h_orig > ./libraries/onlykey/onlykey.h
 /usr/bin/xvfb-run -- ./arduino --verify ../OnlyKey-Firmware/$firmware_file \
-  --preferences-file ./preferences.txt 
+  --preferences-file ./preferences.txt \
+  -v
 
 cd /builds
 rm -rf /builds/*.hex
 cp /builds/build/*.hex /builds/.
 rm -rf /builds/arduino-1.6.5-r5
 rm -rf /builds/OnlyKey-Firmware
-#rm -rf /builds/build
+rm -rf /builds/build
 
