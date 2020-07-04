@@ -14,7 +14,13 @@ docker-build:
 	docker run --rm -v "$(CURDIR)/builds:/builds" \
 					-v "$(CURDIR):/onlykey" \
 					-u $(shell id -u ${USER}):$(shell id -g ${USER}) \
-				    $(DOCKER_TOOLCHAIN_IMAGE) "onlykey/in-docker-build.sh" ${SOLO_VERSION_FULL}
-
+				    $(DOCKER_TOOLCHAIN_IMAGE) "onlykey/in-docker-build.sh"
+				    
+				    
+docker-build-local:
+	docker run --rm -v "$(CURDIR)/builds:/builds" \
+					-v "$(CURDIR):/onlykey" \
+					-u $(shell id -u ${USER}):$(shell id -g ${USER}) \
+				    $(DOCKER_TOOLCHAIN_IMAGE) "onlykey/in-docker-build.sh" local
 
 	

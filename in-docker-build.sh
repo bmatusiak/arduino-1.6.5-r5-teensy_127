@@ -1,5 +1,34 @@
 #!/bin/bash -xe
 
+
+
+
+branch=$1
+
+if [ "${branch}" == "" ] ; then
+    echo "NO BRANCH SELECTED - SETTING TO: MASTER"
+    branch="master"
+fi
+
+if [ "${branch}" == "local" ] ; then
+    firmware_git_path=/onlykey/OnlyKey-Firmware
+    libraries_git_path=/onlykey/libraries
+    firmware_branch=master
+    libraries_branch=master
+else
+    firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
+    libraries_git_path=https://github.com/trustcrypto/libraries
+    firmware_branch=$branch
+    libraries_branch=$branch
+fi
+
+
+if [ "${branch}" == "v0.2-beta.8" ] ; then
+    firmware_file=OnlyKey_Beta/OnlyKey_Beta.ino
+else
+    firmware_file=OnlyKey/OnlyKey.ino
+fi
+
 # PLEASE NOTE. 
 # Most people wont need the ability to compile firmware themselves, 
 # as you can't load custom firmware unless you have a developer onlykey.
@@ -14,14 +43,14 @@
 
 ## `/onlykey/.` is relative to this script
 ## folders, this script is `/onlykey/in-docker-build.sh`, OnlyKey-Firmware, libraries are .gitignored
-firmware_git_path=/onlykey/OnlyKey-Firmware
-libraries_git_path=/onlykey/libraries
+#firmware_git_path=/onlykey/OnlyKey-Firmware
+#libraries_git_path=/onlykey/libraries
 
 
 ####-------   WHAT   ## you can load any git checkouts or branch
-firmware_file=OnlyKey/OnlyKey.ino
-firmware_branch=master
-libraries_branch=master
+#firmware_file=OnlyKey/OnlyKey.ino
+#firmware_branch=master
+#libraries_branch=master
 
 #firmware_file=OnlyKey_Beta/OnlyKey_Beta.ino
 #firmware_branch=v0.2-beta.8
