@@ -17,6 +17,9 @@ help:
 	@echo ""
 	@echo "Build firmware from tag"
 	@echo "branch=v0.2-beta.8 make docker-build"
+	@echo ""
+	@echo "Need to get the source for local dev?"
+	@echo "make get-master"
 
 DOCKER_TOOLCHAIN_IMAGE := "onlykey/onlykey-firmware-toolchain"
 
