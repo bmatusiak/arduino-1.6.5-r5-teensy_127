@@ -10,14 +10,21 @@ if [ "${branch}" == "" ] ; then
     branch="master"
 fi
 
+
+github_fork=$2
+
+if [ "${github_fork}" == "" ] ; then
+    github_fork="trustcrypto"
+fi
+
 if [ "${branch}" == "local" ] ; then
     firmware_git_path=/onlykey/OnlyKey-Firmware
     libraries_git_path=/onlykey/libraries
     firmware_branch=master
     libraries_branch=master
 else
-    firmware_git_path=https://github.com/trustcrypto/OnlyKey-Firmware
-    libraries_git_path=https://github.com/trustcrypto/libraries
+    firmware_git_path=https://github.com/$github_fork/OnlyKey-Firmware
+    libraries_git_path=https://github.com/$github_fork/libraries
     firmware_branch=$branch
     libraries_branch=$branch
 fi
