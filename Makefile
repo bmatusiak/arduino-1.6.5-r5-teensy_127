@@ -34,7 +34,10 @@ docker-build-local:
 					-v "$(CURDIR):/onlykey" \
 					-u $(shell id -u ${USER}):$(shell id -g ${USER}) \
 				    $(DOCKER_TOOLCHAIN_IMAGE) "onlykey/in-docker-build.sh" local
-
+get-master:
+	git clone https://github.com/trustcrypto/OnlyKey-Firmware ./ \
+    && git clone https://github.com/trustcrypto/libraries ./
+	
 show-build:
 	cat ./builds/*.hex
 
