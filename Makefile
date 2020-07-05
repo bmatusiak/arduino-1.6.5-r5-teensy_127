@@ -1,8 +1,8 @@
 
 
-all: build
+all: docker-build-toolchain docker-build
 
-build: 
+help: 
 	@echo "Build Docker Image for building"
 	@echo "make docker-build-toolchain"
 	@echo ""
@@ -34,5 +34,8 @@ docker-build-local:
 					-v "$(CURDIR):/onlykey" \
 					-u $(shell id -u ${USER}):$(shell id -g ${USER}) \
 				    $(DOCKER_TOOLCHAIN_IMAGE) "onlykey/in-docker-build.sh" local
+
+show-build:
+	cat ./builds/*.hex
 
 	
